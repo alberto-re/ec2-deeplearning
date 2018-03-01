@@ -1,0 +1,14 @@
+# The name of the bucket where CloudFormation template will be stored
+S3_BUCKET="<YOUR_S3_BUCKET>"
+
+# The name of the IAM role with S3 read access to the above bucket
+IAM_ROLE="<YOUR_IAM_ROLE>"
+
+# The key pair to use for authentication
+KEY_NAME="<YOUR_KEY_PAIR>"
+
+# The root volume size
+ROOT_VOLUME_GB="<SIZE>"
+
+# The Cloudformation stack name
+CLOUDFORMATION_STACK_NAME="deeplearning"

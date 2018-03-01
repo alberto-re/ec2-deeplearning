@@ -1,0 +1,42 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    
+    "Description" : "Configures an EC2 instance suitable for deep learning workloads",
+    
+    "Parameters" : {
+        "InstanceTypeParameter" : {
+          "Type" : "String",
+          "Default" : "p2.xlarge",
+          "AllowedValues" : ["p2.xlarge", "p2.8xlarge"],
+          "Description" : "Enter p2.xlarge or p2.8xlarge. Default is p2.xlarge."
+        },
+        "IamInstanceProfileParameter" : {
+            "Type" : "String",
+            "Description" : "Enter a profile with S3 read permission."
+          },
+        "KeyNameParameter" : {
+            "Type" : "String",
+            "Description" : "Enter the name of the key pair for authentication."
+          },
+        "VolumeSizeParameter" : {
+            "Type" : "Number",
+            "Description" : "Enter the size in GB of the root volume."
+          }
+      },
+    
+      "Resources" : {
+        "Ec2Instance": {
+            "Type" : "AWS::EC2::Instance",
+            "Properties" : {
+                "ImageId" : "ami-55ef662f",
+                "InstanceType" : { "Ref" : "InstanceTypeParameter" },
+                "IamInstanceProfile" : { "Ref" : "IamInstanceProfileParameter" },
+                "KeyName" : { "Ref" : "KeyNameParameter" },
+                "BlockDeviceMappings" : [ {
+                    "DeviceName" : "/dev/xvda",
+                    "Ebs" : { "VolumeSize" : { "Ref" : "VolumeSizeParameter" } }
+                } ]
+            }
+        }
+    }
+}

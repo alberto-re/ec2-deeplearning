@@ -1,0 +1,16 @@
+pip
+pandas
+scipy
+sklearn
+nltk
+matplotlib
+seaborn
+theano
+tensorflow-gpu
+h5py
+keras
+jupyter
+kaggle-cli
+tqdm
+pillow
+opencv-python
